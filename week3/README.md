@@ -9,7 +9,7 @@ See the Python Challenge [here](http://www.pythonchallenge.com)
 To try out my python challenge, go to the link on my website [here](hanssmithwrin.ch/python_challenge.html)
 \
 \
-[](pythonchallenge.png)
+[alt text](python_challenge.png)
 \
 \
 \
