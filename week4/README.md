@@ -1,9 +1,5 @@
 
-# Learning OpenFrameworks: Realtime Perlin Noise Vector Fields
-
-This repo was created to learn more about how to use Openframeworks, as well as generate some cool generative art using Perlin Noise Fields.
-
-## The process
+# Week 4 - Learning OpenFrameworks: Realtime Perlin Noise Vector Fields
 
 I used the ofxVectorField add-on by Jeremy Rotsztain (which can be found [here](https://github.com/mantissa/ofxVectorField)).
 
