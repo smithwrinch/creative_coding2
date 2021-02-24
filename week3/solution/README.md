@@ -2,7 +2,7 @@
 The congratulation page is [here](hanssmithwrin.ch/38009235630.html)
 \
 \
-[alt](congrats.png)
+![alt](congrats.png)
 \
 \
 \
