@@ -1,5 +1,15 @@
 
-# Week 4 - Learning OpenFrameworks: Realtime Perlin Noise Vector Fields
+# Week 4
+
+## EXERCISE
+In class we were instructed to create a simple python web scraper using BeautifulSoup. I found out that by pressing the first non italicized non parenthized link on each wikipedia page you would get to wiki/Philosophy - or you would reach a cycle (repeated links) or dead end (no links). To showcase this I created a simple scraper that works out the "Philsophy number" of an inputted wiki page - that is the amount of links it takes to get to philosphy. The software includes support for cycles as well as dead ends. Below are some examples of the execution:
+\
+
+![alt text](img/p1.png)
+![alt text](img/p2.png)
+![alt text](img/p3.png)
+
+## HOMEWORK: Learning OpenFrameworks: Realtime Perlin Noise Vector Fields
 
 I used the ofxVectorField add-on by Jeremy Rotsztain (which can be found [here](https://github.com/mantissa/ofxVectorField)).
 
