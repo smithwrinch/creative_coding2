@@ -31,7 +31,7 @@ Create a training set that produces a diagonal line from one corner of the canva
 How easy is this to do? What issues do you face?
 \
 \
-I found it quite difficult to create a straight diagonal line with the regression explorer. In theory, it is a very simple regression/interpolation task to infer to data points from one corner to the other (a straight line) - this was my tactic. However the regression in this example was obviously expecting curved data/a curved function so it approximated my data points accordingly. I could have yielded a better example had I included more data points along the line but it would never be a perfect line.
+I found it quite difficult to create a straight diagonal line with the regression explorer. In theory, it is a very simple regression/interpolation task to infer to data points from one corner to the other (a straight line) - this was my tactic. However the regression in this example was obviously expecting curved data/a curved function so it approximated my data points accordingly. I could have yielded a better example had I included more data points straight along the line but it would never be perfectly straight.
 \
 ![alt](4.png)
 ### Exercise 5
@@ -39,5 +39,23 @@ The MIMIC [here](https://mimicproject.com/code/5d67faaa-e4c3-771a-f824-fe5c5b978
 ### Exercise 6
 Can you take the simple RapdLib example we created at the start and use it to take different inputs, and control different outputs?
 How about using the system for controlling a 3D mesh?
+\
+\
+For this exercise I attempted to create a basic AI for a simple paddle game. The aim is to get as many falling circles as possible moving either left or right. The user can train the model and then run it to see what score it gets. The inputs are obstacle position and player X and the output is player velocity (ie left or right). Note this is really a classification problem (two discrete classes) but I opted to use a regression to make the output seem more organic.
+\
+\
+Halfway through creating this using a HTML5 canvas I discovered some pretty cool and accidental artefacts with arcs. These can be seen below.
+\
+![alt](5.png)
+![alt](6.png)
+![alt](7.png)
+![alt](8.png)
+\
+\
+You may play the game on MIMIC [here](https://mimicproject.com/code/8a3d6fe7-02ec-8402-b955-3f57bc3df419). Below are some screenshots.
+\
+![alt](9.png)
+![alt](10.png)
+\
 
 ## Using Numpy to compute images

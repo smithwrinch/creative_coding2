@@ -1,0 +1,206 @@
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+</head>
+ <body>
+
+    <canvas id="myCanvas"> </canvas>
+
+ </body>
+ <script src="https://mimicproject.com/libs/rapidLib.js"> </script>
+
+ <script>
+    window.addEventListener('keydown',this.check,false);
+
+    var canvas = document.getElementById("myCanvas");
+    //canvas.addEventListener('mouseup', onMouseUp);
+    var ctx = canvas.getContext("2d");
+    var width = canvas.width = 900;
+    var height = canvas.height = 700;
+
+    var pX = width/3;//player x
+    var pY =height*3/4;//player y
+    var pWidth = 100;// player width
+    var pHeight = 20;//player height
+    var time_ = 0;
+
+    var x = 0;
+    var y= 0; // obstacle pos
+
+    var vel = 4; // speed of falling obstacles
+    var speed = 5; //speed of player
+    var pVel = -speed; // velocity of player
+
+    var score = 0;
+
+    //ML
+    var myData = [];
+
+
+    var rapidLib = RapidLib();
+
+   //Create a machine learning object for regression
+   var reg = new rapidLib.Regression();
+    var training = false;
+    var running = false;
+    var hasTrained = false; //flag to see if model been trained on dataset
+
+
+    function animate() {
+
+        requestAnimationFrame(animate);
+
+
+
+
+        time_ ++;
+        if(time_ > 10000000) time_ = 0;
+
+        ctx.clearRect( 0, 0 , canvas.height*2, canvas.width*2);
+        ctx.beginPath();
+
+        ctx.fillStyle = '#040';
+        pX += pVel;
+        if (pX < 0) pX = 0;
+        if (pX > width- pWidth) pX = width-pWidth;
+        ctx.fillRect(pX, pY, pWidth, pHeight);
+        y += vel;
+        ctx.arc(x, y, 10, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+        if(collides()){
+          if(running) score ++;
+          spawn();
+        }
+        if(y > height ){
+          spawn();
+        }
+
+
+        ctx.font = "30px Arial";
+        ctx.fillText("t: train\nr: run\nx:reset", 0, height/4);
+        if(training){
+          ctx.fillText("Training", width/2, height/4 + 50);
+
+          if(time_ % 25 == 0){
+            addDataPoint();
+          }
+        }
+        if(running){
+          ctx.fillText("Running", width/2, height/4 + 100);
+          ctx.fillText(score, width/2, height/4);
+          pVel = reg.run([Math.round(x),Math.round(y),Math.round(pX)])[0];
+          console.log(pVel);
+        }
+
+        if(hasTrained){
+          hasTrained = false;
+          reg.train(myData);
+        }
+
+    }
+    spawn();
+    animate();
+
+  function onMouseUp(event){
+    x = event.offsetX;
+    y =  event.offsetY;
+  }
+
+  function spawn(){
+    //spawns obstacle
+    y = - 20;
+    x = Math.random() * width + 20;
+  }
+
+
+ function check(e) {
+     let code = e.keyCode;
+     switch(code){
+       case 37:
+       //left
+       if(!running) pVel = - speed;
+       break;
+       case 39:
+       //right
+
+       if(!running) pVel = speed;
+       break;
+       case 84:
+       //t
+       training = !training;
+       score = 0;
+       running = false;
+       break;
+       case 82:
+       //r
+       hasTrained = true;
+       training = false;
+       running = !running;
+       score = 0;
+       break;
+
+       case 88:
+       //x
+       training = false;
+       myData = [];
+       score = 0;
+       break;
+     }
+     //pVel = 0;
+ }
+  var myData = [];
+ function collides(){
+  return pX < x +10&& pX + pWidth > x - 10 && y > pY && y < pY + pWidth;
+ }
+
+  function addDataPoint(){
+    var data = {input: [Math.round(x), Math.round(y), Math.round(pX)], output: [Math.round(pVel)]};
+    myData.push(data);
+    console.log(myData);
+  }
+
+
+
+
+   //Create a Javascript object to hold your training data
+   // var myData = [
+   //   {
+   //     input:  [48],
+   //     output: [130.81]
+   //   },
+   //   {
+   //     input:  [54],
+   //     output: [185.00]
+   //   },
+   //   {
+   //     input:  [60],
+   //     output: [261.63]
+   //   },
+   //   {
+   //     input:  [66],
+   //     output: [369.994]
+   //   },
+   //   {
+   //     input:  [72],
+   //     output: [523.25]
+   //   }
+   // ];
+
+
+   // //Train a machine learning model with the data
+   // midiToFrequencyRegression.train(myData);
+   //
+   // //Create a new input to test the model
+   // var newInput = [64];
+   //
+   // //Run the trained model on the new input
+   // var freqHz = midiToFrequencyRegression.run(newInput);
+   //
+   // console.log(freqHz); // outputs 333.713, the value of the frequency in Hz
+
+ </script>
+ </html>
