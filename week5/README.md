@@ -8,6 +8,7 @@ Explore how the neural network produces results based on different inputs.
 A regression infers an inputs value when applied to a function - a function which is built over true data points (this "building" occurs when the model is trained). This can be viewed similarly to interpolating an (x,y) combination over a curve based on true (x,y) combinations, given the x value. Of course, inputting values outside of the dataset input range will yield undesirable results as there is no reliable data to base the output on.
 ### Exercise 2
 ![alt](1.png)
+\
 This exercise features an example of K-Nearest Neighbour classification. Holding down a number and moving your mosue will set ground truth datapoints with classifications based on the number pressed. The output of the KNN algorithm is then illustrated using colours to represent the different discrete classes.
 Try to choose a set of training examples that will draw the boundary with Class 1 on the left in green and Class 2 on the right in blue. Try and make the line as straight as possible between the two classes.
 \
@@ -18,6 +19,7 @@ I found the easiest way to make the line straight was to create a mirror of the 
 \
 \
 Now try to make class 2 occupy the lower right quadrant.
+\
 ![alt](3.png)
 \
 Similarly to the previous example, this shouldn't require many datapoints. The difference here is that the data points are in each corner (in equal amounts), equidistant to the origin. Likewise, they do not need to be close or far from the boundary, as long as they are all equidistant to the origin.
