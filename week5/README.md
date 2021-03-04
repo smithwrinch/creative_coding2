@@ -59,3 +59,8 @@ You may play the game on MIMIC [here](https://mimicproject.com/code/8a3d6fe7-02e
 \
 
 ## Using Numpy to compute images
+For the homework I used a simple circle approximation generator and then randomly added them across the figure. Due to the approximation this resulted in predictable noisy results which I thought looked quite cool. The code is written such that it inverts whatever the pixel is if the circle lands over it. Essentially it is an array of booleans. I considered this made the circles blend in more.
+\
+![alt](11.png)
+![alt](12.png)
+![alt](13.png)
