@@ -66,6 +66,7 @@ covariance_matrix = np.cov(M.T)
 
 Now I reshape the data such that I can find the covariance matrix as this requires a 2D matrix. The covariance matrix can be seen as a measure of how much each dimension varies from the mean compared to one another. That is, it contains information about the amount of variance shared between pairs of dimensions.
 \
+\
 ![std](img/cov.png)
 ```
 eigen_values, eigen_vectors = np.linalg.eig(covariance_matrix) #eigenfaces are the eigenvectors
@@ -99,7 +100,6 @@ Here I am trying to find the optimal amount of principle components to be used f
 \
 ![std](img/variance.png)
 ```
-
 # PCA transformation matrix using first 20 principle components
 projection_matrix = (eigen_vectors.T[:][:20]).T
 data_pca2 = M.dot(projection_matrix)
