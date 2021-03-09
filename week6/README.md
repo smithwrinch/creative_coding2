@@ -96,7 +96,7 @@ plt.show()
 # line changes most drastically is called the "elbow"
 
 ```
-Here I am trying to find the optimal amount of principle components to be used for analysis. Due to the small dataset, I opted for a 80% confidence level which came to 20 components
+Here I am trying to find the optimal amount of principle components to be used for analysis. Due to the small dataset, I opted for a 80% confidence level which came to about 20 components
 \
 ![std](img/variance.png)
 ```
