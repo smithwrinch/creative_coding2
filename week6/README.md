@@ -114,3 +114,91 @@ plot_gallery(eigenfaces2, range(20), w, h, 4, 5)
 
 \
 ![std](img/automatic.png)
+## Task 2: Aquiring a new dataset
+For this exercise I decided to build a dataset of dank memes. I decided to scrape instagram with the hastag #dankmeme
+```
+from bs4 import BeautifulSoup
+import urllib.request
+from urllib.error import HTTPError
+from urllib.parse import urljoin
+import selenium.webdriver as webdriver
+import time
+
+url = 'https://www.instagram.com/explore/tags/dankestmemes/'
+driver = webdriver.Firefox(executable_path='geckodriver')
+driver.get(url)
+
+soup = BeautifulSoup(driver.page_source)
+```
+Do you to the infinity scrolling I had to manually inject some javascript periodically.
+```
+
+time.sleep(2)  # Allow 2 seconds for the web page to open
+scroll_pause_time = 1 # You can set your own pause time. My laptop is a bit slow so I use 1 sec
+screen_height = driver.execute_script("return window.screen.height;")   # get the screen height of the web
+i = 1
+
+while i < 25:
+    # scroll one screen height each time
+    driver.execute_script("window.scrollTo(0, {screen_height}*{i});".format(screen_height=screen_height, i=i))  
+    i += 1
+    time.sleep(scroll_pause_time)
+    # update scroll height each time after scrolled, as the scroll height can change after we scrolled the page
+    scroll_height = driver.execute_script("return document.body.scrollHeight;")  
+    # Break the loop when the height we need to scroll to is larger than the total scroll height
+    if (screen_height) * i > scroll_height:
+        break
+# driver.switch_to.default_content()
+tags=soup.findAll('img',{"src":True})
+test = [tag['src'] for tag in tags]
+print(test[0])
+print(len(test))
+```
+Since you could only scrape around 33 images before being met with a log in screen, I changed the hashtag subtly and incrememnted an index for saving the files.
+```
+index = 67 # incremment by 33 each time
+
+for n, img in enumerate(test):
+    if(img[0] == '/'): continue
+    urllib.request.urlretrieve(img, "dank_memes/" + str(n+index))
+```
+![dankmemes](img/dataset.png)
+\
+\
+Finding the average dank meme
+```
+import glob
+import cv2
+
+def load_images_from_folder(folder):
+    images = []
+    for filename in os.listdir(folder):
+        img = cv2.imread(os.path.join(folder,filename))
+        if img is not None:
+            res = cv2.resize(img, dsize=(100, 100), interpolation=cv2.INTER_CUBIC)
+            res = cv2.cvtColor(res, cv2.COLOR_BGR2RGB)
+            images.append(res)
+    return images
+
+meme_list = load_images_from_folder('dank_memes/')
+memes = np.array(meme_list)
+print(memes.shape)
+print('meme shape:', np.array(memes).shape)
+plt.figure(figsize=(10,10)) # specifying the overall grid size
+
+for i in range(100):
+    plt.subplot(10,10,i+1)    # the number of images in the grid is 5*5 (25)
+    plt.imshow(memes[i])
+    plt.axis('off')
+plt.show()  
+```
+![](img/avg_img.png)
+\
+\
+The average meme looks like a messy blank canvas. This was to be expected as the dataset was so small (100) and varied. I think it would be really cool to do a project surrounding this, possibly making an AI meme account with pictures and captions acquired through popular posts - filtered or generated using sophisticated ML techniques - and seeing if it can get a decent following without telling anyone that it is a bot.
+\
+\
+During the task, there were some happy accidents when displaying the dataset. I thought they looked really cool and would be interested in doing a piece of these glitchy images.
+
+![](img/accident2.png)
+![](img/accident3.png)
