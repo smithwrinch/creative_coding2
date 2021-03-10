@@ -192,7 +192,7 @@ for i in range(100):
     plt.axis('off')
 plt.show()  
 ```
-![](img/avg_img.png)
+![](img/avg_image.png)
 \
 \
 The average meme looks like a messy blank canvas. This was to be expected as the dataset was so small (100) and varied. I think it would be really cool to do a project surrounding this, possibly making an AI meme account with pictures and captions acquired through popular posts - filtered or generated using sophisticated ML techniques - and seeing if it can get a decent following without telling anyone that it is a bot.
@@ -201,4 +201,7 @@ The average meme looks like a messy blank canvas. This was to be expected as the
 During the task, there were some happy accidents when displaying the dataset. I thought they looked really cool and would be interested in doing a piece of these glitchy images.
 
 ![](img/accident2.png)
+\
+\
+\
 ![](img/accident3.png)
