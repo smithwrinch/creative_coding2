@@ -113,7 +113,7 @@ plot_gallery(eigenfaces2, range(20), w, h, 4, 5)
 ```
 
 \
-![std](img/automatic.png)
+![std](img/manual.png)
 ## Task 2: Aquiring a new dataset
 For this exercise I decided to build a dataset of dank memes. I decided to scrape instagram with the hastag #dankmeme
 ```
