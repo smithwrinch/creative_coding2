@@ -34,7 +34,7 @@ Interesting... This result clearly illustrated that there was a sacrifice of the
 ## GAN's (briefly)
 The next stage of the set work required me to look at Generative Adversarial Networks. I completed the notebook exercise and below are some pictures of this process.
 \
-\
+
 #### Horror creation 1
 ![](img/gan_horror.png)
 
@@ -98,7 +98,6 @@ Clearly my face does not fit the data that the network was trained on well. I th
 Following the other notebok in the repo, I was able to train and design a neural network in Tensorflow to fit a regression of a custom trigonetric function.
 
 #### A simple y= mx + b fit
-![](img/hw/new_train.png)
 ![](img/hw/quad.png)
 #### Fitting to a polynomial (order 4)
 ![](img/hw/quad4.png)
@@ -109,6 +108,6 @@ Following the other notebok in the repo, I was able to train and design a neural
 ![](img/hw/tanh.png)
 
 ### Image inpainting
-Having learned of image inpainting, I applied the technique to an image of my face. A gif of many many iterations can be seen below.
+Having learned of image inpainting, I applied the technique to an image of my face. A gif of many, many iterations can be seen below.
 
 ![](img/hw/me.gif)
